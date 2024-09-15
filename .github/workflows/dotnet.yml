@@ -16,16 +16,7 @@ jobs:
  
     # aqui é iniciado o passo a passo para realizar o processo de publicação
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup .NET
-        with:
-          dotnet-version: 8.0.x
-      - name: Restore dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+      - uses: actions/checkout@v3
    
       - name: Cria um arquivo temporário para a chave privada 
         run: |

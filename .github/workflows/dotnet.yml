@@ -30,11 +30,11 @@ jobs:
  
       - name: Ajustar permissões no servidor de Produção
         run: |
-          ssh -i /tmp/private_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@${{ secrets.HOST }} "sudo chown -R ubuntu:ubuntu home/ubuntu/appCSharp2/IpApp && sudo chmod -R 755 home/ubuntu/appCSharp2/IpApp"
+          ssh -i /tmp/private_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@${{ secrets.HOST }} "sudo chown -R ubuntu:ubuntu /home/ubuntu/appCSharp2/IpApp && sudo chmod -R 755 /home/ubuntu/appCSharp2/IpApp"
                       
       - name: Transferindo os arquivos da aplicação
         run: |
-               scp -i /tmp/private_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ${{ github.workspace }}/* ubuntu@${{ secrets.HOST }}:home/ubuntu/appCSharp2/IpApp
+               scp -i /tmp/private_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ${{ github.workspace }}/* ubuntu@${{ secrets.HOST }}:/home/ubuntu/appCSharp2/IpApp
  
       - name: Restaurando a aplicação
         run: |
